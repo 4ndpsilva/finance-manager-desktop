@@ -49,12 +49,12 @@ public class LauncherApp extends Application {
     private void initMainStage() {
         try{
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/contact.fxml"));
+            loader.setLocation(getClass().getResource("/view/main.fxml"));
             this.principal = (AnchorPane) loader.load();
             final Scene scene = new Scene(principal);
 
-            final PersonController controller = loader.getController();
-            controller.setLauncherApp(this);
+            //final PersonController controller = loader.getController();
+            //controller.setLauncherApp(this);
 
             stage.setScene(scene);
             stage.show();
