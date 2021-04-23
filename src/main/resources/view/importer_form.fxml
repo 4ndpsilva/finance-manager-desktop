@@ -8,11 +8,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="700.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+    fx:controller="aps.spreadsheetimporter.controller.ImportController">
    <children>
        <GridPane layoutX="154.0" layoutY="147.0" prefHeight="75.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <columnConstraints>
@@ -30,7 +29,7 @@
                    </GridPane.margin>
                 </Label>
                 <TextField GridPane.columnIndex="1" fx:id="txtFile"/>
-                <Button mnemonicParsing="false" text="Abrir" GridPane.columnIndex="2" fx:id="btnOpenFile">
+                <Button mnemonicParsing="false" text="Abrir" GridPane.columnIndex="2" fx:id="btnOpenFile" onAction="#handleOpenFile">
                    <GridPane.margin>
                       <Insets left="10.0" />
                    </GridPane.margin>
@@ -42,6 +41,6 @@
               <Insets left="5.0" right="5.0" />
           </padding>
        </ProgressBar>
-       <Button layoutX="423.0" layoutY="116.0" mnemonicParsing="false" text="Importar" fx:id="btnImport"/>
+       <Button layoutX="423.0" layoutY="116.0" mnemonicParsing="false" text="Importar" fx:id="btnImport" onAction="#handleImport" alignment="BOTTOM_RIGHT"/>
    </children>
 </AnchorPane>

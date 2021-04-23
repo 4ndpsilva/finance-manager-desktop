@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.model;
+package aps.spreadsheetimporter.domain;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

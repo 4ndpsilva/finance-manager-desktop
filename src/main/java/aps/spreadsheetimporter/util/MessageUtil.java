@@ -33,7 +33,7 @@ public class MessageUtil {
     public static boolean showConfirm(final String header, final String details){
         final Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Atenção");
-        Optional<ButtonType> result = show(alert, header, details);
+        final Optional<ButtonType> result = show(alert, header, details);
         return result.get() == ButtonType.OK ? true : false;
     }
 }

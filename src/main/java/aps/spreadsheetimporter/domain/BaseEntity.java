@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.model;
+package aps.spreadsheetimporter.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

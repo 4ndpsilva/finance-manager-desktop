@@ -1,6 +1,6 @@
 package aps.spreadsheetimporter.controller;
 
-import aps.spreadsheetimporter.model.Person;
+import aps.spreadsheetimporter.domain.Person;
 import aps.spreadsheetimporter.util.DateUtil;
 import aps.spreadsheetimporter.util.MessageUtil;
 import javafx.fxml.FXML;

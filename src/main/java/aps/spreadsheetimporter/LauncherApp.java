@@ -1,8 +1,10 @@
 package aps.spreadsheetimporter;
 
-import aps.spreadsheetimporter.controller.PersonController;
+import java.io.IOException;
+import java.time.LocalDate;
+
 import aps.spreadsheetimporter.controller.PersonEditController;
-import aps.spreadsheetimporter.model.Person;
+import aps.spreadsheetimporter.domain.Person;
 import aps.spreadsheetimporter.util.MessageUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -13,9 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import lombok.Getter;
-
-import java.io.IOException;
-import java.time.LocalDate;
 
 public class LauncherApp extends Application {
     private Stage stage;
@@ -49,12 +48,12 @@ public class LauncherApp extends Application {
     private void initMainStage() {
         try{
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/main.fxml"));
+            loader.setLocation(getClass().getResource("/view/importer_form.fxml"));
             this.principal = (AnchorPane) loader.load();
             final Scene scene = new Scene(principal);
 
-            //final PersonController controller = loader.getController();
-            //controller.setLauncherApp(this);
+//            final PersonController controller = loader.getController();
+  //          controller.setLauncherApp(this);
 
             stage.setScene(scene);
             stage.show();
