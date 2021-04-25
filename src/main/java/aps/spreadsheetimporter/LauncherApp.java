@@ -34,7 +34,9 @@ public class LauncherApp extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        //launch(args);
+    	
+    	
     }
 
     @Override
