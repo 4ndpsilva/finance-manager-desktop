@@ -3,6 +3,7 @@ package aps.spreadsheetimporter.service;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,8 +14,9 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import aps.spreadsheetimporter.domain.Entry;
+import aps.spreadsheetimporter.domain.Operation;
 import aps.spreadsheetimporter.dto.EntryDTO;
+import aps.spreadsheetimporter.util.DateUtil;
 
 
 public class ImporterService {
@@ -46,12 +48,22 @@ public class ImporterService {
         					break;
         				case 1:
         					dto.setAccount(cell.getStringCellValue());
+        					break;
+        				case 2:
+        					dto.setEntryDate(DateUtil.parse(cell.getStringCellValue()));
+        					break;
+        				case 3:
+        					dto.setOperation(Operation.valueOf(cell.getStringCellValue()));
+        					break;
+        				case 4:
+        					dto.setValue(new BigDecimal(cell.getStringCellValue().replace("R$", "").replace(",", ".").trim()));
+        					break;
         				}
+        				
+        				entries.add(dto);
         			}
         		}
         	}
-        }
-        
-        
+        }  
     }
 }
