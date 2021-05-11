@@ -72,15 +72,11 @@ public class ImporterService {
 								break;
 							}
 						}
-
 						
-						if(!dto.getCategory().isEmpty()) {							
-							entries.add(dto);		
-						}
+						entries.add(dto);
 					}
 					else {
-						System.out.println(entries.size());
-						break;
+						
 					}
 				} 
 			}

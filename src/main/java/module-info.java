@@ -4,6 +4,7 @@ module spreadsheet.importer {
     requires javafx.controls;
     requires javafx.fxml;
 	requires org.apache.poi.poi;
+	requires java.sql;
 
     opens aps.spreadsheetimporter;
     opens aps.spreadsheetimporter.controller;
