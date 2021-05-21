@@ -6,6 +6,6 @@ module spreadsheet.importer {
 	requires org.apache.poi.poi;
 	requires java.sql;
 
-    opens aps.spreadsheetimporter;
-    opens aps.spreadsheetimporter.controller;
+    opens aps.financemanagerdesktop;
+    opens aps.financemanagerdesktop.controller;
 }

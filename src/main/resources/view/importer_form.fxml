@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="700.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-    fx:controller="aps.spreadsheetimporter.controller.ImportController">
+    fx:controller="aps.financemanagerdesktop.controller.ImportController">
    <children>
        <GridPane layoutX="154.0" layoutY="147.0" prefHeight="75.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
            <columnConstraints>

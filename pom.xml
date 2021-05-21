@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>aps.spreadsheetimporter</groupId>
-    <artifactId>spreadsheet-importer</artifactId>
+    <groupId>aps.financemanagerdesktop</groupId>
+    <artifactId>finance-manager-desktop</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,7 +15,7 @@
         <lombok.version>1.18.20</lombok.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <javafx.maven.version>0.0.5</javafx.maven.version>
-        <main.class>aps.spreadsheetimporter.LauncherApp</main.class>
+        <main.class>aps.financemanagerdesktop.LauncherApp</main.class>
         <apache.poi.version>5.0.0</apache.poi.version>
     </properties>
 
