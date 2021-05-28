@@ -101,7 +101,7 @@ public class PersonController {
     }
 
     private void showForm(final Person person){
-        boolean okClicked = launcherApp.showFormDialog(person);
+        final boolean okClicked = launcherApp.showFormDialog(person);
 
         if(okClicked){
             if (isNew){

@@ -17,7 +17,7 @@ public class ConnectionFactory {
 	static {
 		try {
 			properties = new Properties();
-			properties.load(new FileInputStream(new File("connection-db.properties")));
+			properties.load(new FileInputStream(new File("database.properties")));
 			
 			URL = properties.getProperty("url");
 		}
