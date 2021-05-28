@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.util;
+package aps.financemanagerdesktop.util;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

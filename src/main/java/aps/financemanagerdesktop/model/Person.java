@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.model;
+package aps.financemanagerdesktop.model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

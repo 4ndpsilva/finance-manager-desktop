@@ -4,6 +4,6 @@ module spreadsheet.importer {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens aps.spreadsheetimporter;
-    opens aps.spreadsheetimporter.controller;
+    opens aps.financemanagerdesktop;
+    opens aps.financemanagerdesktop.controller;
 }

@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.util;
+package aps.financemanagerdesktop.util;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

@@ -1,4 +1,4 @@
-package aps.spreadsheetimporter.application;
+package aps.financemanagerdesktop.application;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -1,9 +1,9 @@
-package aps.spreadsheetimporter.controller;
+package aps.financemanagerdesktop.controller;
 
-import aps.spreadsheetimporter.LauncherApp;
-import aps.spreadsheetimporter.model.Person;
-import aps.spreadsheetimporter.util.DateUtil;
-import aps.spreadsheetimporter.util.MessageUtil;
+import aps.financemanagerdesktop.LauncherApp;
+import aps.financemanagerdesktop.model.Person;
+import aps.financemanagerdesktop.util.DateUtil;
+import aps.financemanagerdesktop.util.MessageUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

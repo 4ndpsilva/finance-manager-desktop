@@ -1,9 +1,9 @@
-package aps.spreadsheetimporter;
+package aps.financemanagerdesktop;
 
-import aps.spreadsheetimporter.controller.PersonController;
-import aps.spreadsheetimporter.controller.PersonEditController;
-import aps.spreadsheetimporter.model.Person;
-import aps.spreadsheetimporter.util.MessageUtil;
+import aps.financemanagerdesktop.controller.PersonController;
+import aps.financemanagerdesktop.controller.PersonEditController;
+import aps.financemanagerdesktop.model.Person;
+import aps.financemanagerdesktop.util.MessageUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
