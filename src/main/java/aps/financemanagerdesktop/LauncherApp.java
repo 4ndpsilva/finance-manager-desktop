@@ -2,7 +2,7 @@ package aps.financemanagerdesktop;
 
 import aps.financemanagerdesktop.controller.PersonController;
 import aps.financemanagerdesktop.controller.PersonEditController;
-import aps.financemanagerdesktop.model.Person;
+import aps.financemanagerdesktop.domain.Person;
 import aps.financemanagerdesktop.util.MessageUtil;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -64,7 +64,7 @@ public class LauncherApp extends Application {
         }
     }
 
-    public boolean showFormDialog(Person person){
+    public boolean showFormDialog(final Person person){
         try{
             final FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("/view/contact_edit.fxml"));

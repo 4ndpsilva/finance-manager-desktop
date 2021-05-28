@@ -1,7 +1,7 @@
 package aps.financemanagerdesktop.controller;
 
 import aps.financemanagerdesktop.LauncherApp;
-import aps.financemanagerdesktop.model.Person;
+import aps.financemanagerdesktop.domain.Person;
 import aps.financemanagerdesktop.util.DateUtil;
 import aps.financemanagerdesktop.util.MessageUtil;
 import javafx.event.ActionEvent;
@@ -101,7 +101,7 @@ public class PersonController {
     }
 
     private void showForm(final Person person){
-        boolean okClicked = launcherApp.showFormDialog(person);
+        final boolean okClicked = launcherApp.showFormDialog(person);
 
         if(okClicked){
             if (isNew){
