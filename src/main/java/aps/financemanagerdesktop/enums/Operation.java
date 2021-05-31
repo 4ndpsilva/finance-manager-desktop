@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.domain;
+package aps.financemanagerdesktop.enums;
 
 public enum Operation {
 	DESPESA,

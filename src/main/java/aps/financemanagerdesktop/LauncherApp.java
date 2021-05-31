@@ -1,38 +1,23 @@
 package aps.financemanagerdesktop;
 
-import aps.financemanagerdesktop.controller.PersonController;
+import aps.financemanagerdesktop.controller.CategoryController;
 import aps.financemanagerdesktop.controller.PersonEditController;
-import aps.financemanagerdesktop.domain.Person;
-import aps.financemanagerdesktop.util.MessageUtil;
+import aps.financemanagerdesktop.controller.model.CategoryModel;
+import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.Getter;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public class LauncherApp extends Application {
     private Stage stage;
-    private AnchorPane principal;
-
-    @Getter
-    private ObservableList<Person> dataSet;
-
-    public LauncherApp(){
-        dataSet = FXCollections.observableArrayList();
-        dataSet.add(new Person("Kelvin", "Albuquerque", LocalDate.of(1985, 5, 12)));
-        dataSet.add(new Person("Aline", "Fernandes", LocalDate.of(1990, 5, 10)));
-        dataSet.add(new Person("Júlia", "Oliveira", LocalDate.of(1986, 12, 12)));
-        dataSet.add(new Person("José", "Costa", LocalDate.of(1980, 10, 2)));
-        dataSet.add(new Person("Matilda", "Menezes", LocalDate.of(1970, 3, 7)));
-        dataSet.add(new Person("Carlos", "Silva", LocalDate.of(1989, 6, 20)));
-    }
+    private Pane principal;
 
     public static void main(String[] args) {
         launch(args);
@@ -41,7 +26,7 @@ public class LauncherApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        this.stage.setTitle("AgendaApp");
+        this.stage.setTitle("Finance Manager");
 
         initMainStage();
     }
@@ -49,34 +34,34 @@ public class LauncherApp extends Application {
     private void initMainStage() {
         try{
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/contact.fxml"));
-            this.principal = (AnchorPane) loader.load();
+            loader.setLocation(getClass().getResource("/view/category.fxml"));
+            this.principal = (BorderPane) loader.load();
             final Scene scene = new Scene(principal);
 
-            final PersonController controller = loader.getController();
+            final CategoryController controller = loader.getController();
             controller.setLauncherApp(this);
 
             stage.setScene(scene);
             stage.show();
         }
         catch (IOException ex){
-            MessageUtil.showError(ex.getMessage(), ex.getCause().getMessage());
+            AlertUtil.showError(ex.getMessage(), ex.getCause().getMessage());
         }
     }
 
-    public boolean showFormDialog(final Person person){
+    public boolean showFormDialog(final CategoryModel model){
         try{
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/contact_edit.fxml"));
+            loader.setLocation(getClass().getResource("/view/category_edit.fxml"));
             final AnchorPane pane = (AnchorPane) loader.load();
             final Scene scene = new Scene(pane);
 
             final Stage dialogStage = new Stage();
             final PersonEditController controller = loader.getController();
-            controller.setPerson(person);
+            //controller.setPerson(entity);
             controller.setDialogStage(dialogStage);
 
-            dialogStage.setTitle("Cadastro de Contatos");
+            dialogStage.setTitle("Cadastro de Categorias");
             dialogStage.setMaximized(false);
             dialogStage.setResizable(false);
             dialogStage.initModality(Modality.WINDOW_MODAL);
@@ -87,7 +72,7 @@ public class LauncherApp extends Application {
             return controller.isOkClicked();
         }
         catch (IOException ex){
-            MessageUtil.showError(ex.getMessage(), ex.getCause().getMessage());
+            AlertUtil.showError(ex.getMessage(), ex.getCause().getMessage());
             return false;
         }
     }

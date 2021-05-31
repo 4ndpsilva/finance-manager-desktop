@@ -3,14 +3,14 @@ package aps.financemanagerdesktop.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import aps.financemanagerdesktop.domain.Operation;
-import aps.financemanagerdesktop.domain.PaymentType;
+import aps.financemanagerdesktop.enums.Operation;
+import aps.financemanagerdesktop.enums.PaymentType;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class EntryDTO{
+public class ImportDTO {
 	private LocalDate entryDate;
 	private String category;
 	private String account;

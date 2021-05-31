@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.domain;
+package aps.financemanagerdesktop.enums;
 
 public enum PaymentType {
 	VA,
@@ -7,5 +7,6 @@ public enum PaymentType {
 	DEBITO,
 	DINHEIRO,
 	CRED_NUBANK,
+	CRED_C6,
 	CRED_VISA
 }

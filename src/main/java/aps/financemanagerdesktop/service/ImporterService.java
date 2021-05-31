@@ -16,9 +16,9 @@ import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import aps.financemanagerdesktop.domain.Operation;
-import aps.financemanagerdesktop.domain.PaymentType;
-import aps.financemanagerdesktop.dto.EntryDTO;
+import aps.financemanagerdesktop.enums.Operation;
+import aps.financemanagerdesktop.enums.PaymentType;
+import aps.financemanagerdesktop.dto.ImportDTO;
 import aps.financemanagerdesktop.dto.ResponseDTO;
 import aps.financemanagerdesktop.util.DateUtil;
 import lombok.Setter;
@@ -27,8 +27,8 @@ import lombok.Setter;
 public class ImporterService {
 	private String fileName;
 
-	public ResponseDTO<EntryDTO> execute() throws Exception {
-		final ResponseDTO<EntryDTO> responseDTO = new ResponseDTO<>();
+	public ResponseDTO<ImportDTO> execute() throws Exception {
+		final ResponseDTO<ImportDTO> responseDTO = new ResponseDTO<>();
 
 		try (final FileInputStream fis = new FileInputStream(new File(fileName))) {
 
@@ -36,7 +36,7 @@ public class ImporterService {
 			final HSSFSheet sheet = (HSSFSheet) workbook.getSheetAt(0);
 			Iterator<Row> iterator = sheet.iterator();
 
-			final List<EntryDTO> entries = new LinkedList<>();
+			final List<ImportDTO> entries = new LinkedList<>();
 			
 			while (iterator.hasNext()) {
 				final Row rowIterator = iterator.next();
@@ -45,7 +45,7 @@ public class ImporterService {
 					if(!rowIterator.getCell(0).getStringCellValue().isEmpty()) {
 						final Iterator<Cell> cellIterator = rowIterator.cellIterator();
 
-						final EntryDTO dto = new EntryDTO();
+						final ImportDTO dto = new ImportDTO();
 
 						while (cellIterator.hasNext()) {
 							final Cell cell = cellIterator.next();

@@ -5,7 +5,7 @@ import javafx.scene.control.ButtonType;
 
 import java.util.Optional;
 
-public class MessageUtil {
+public class AlertUtil {
     public static void showError(final String header, final String details){
         final Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Mensagem de Erro");

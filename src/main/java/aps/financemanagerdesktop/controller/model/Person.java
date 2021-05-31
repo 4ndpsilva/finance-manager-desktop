@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.domain;
+package aps.financemanagerdesktop.controller.model;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;

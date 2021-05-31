@@ -1,8 +1,8 @@
 package aps.financemanagerdesktop.controller;
 
-import aps.financemanagerdesktop.domain.Person;
+import aps.financemanagerdesktop.controller.model.Person;
 import aps.financemanagerdesktop.util.DateUtil;
-import aps.financemanagerdesktop.util.MessageUtil;
+import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -74,7 +74,7 @@ public class PersonEditController {
         }
 
         if(sbErrors.length() > 0){
-            MessageUtil.showError("Por favor, corrija as informações a seguir", sbErrors.toString());
+            AlertUtil.showError("Por favor, corrija as informações a seguir", sbErrors.toString());
             return false;
         }
 

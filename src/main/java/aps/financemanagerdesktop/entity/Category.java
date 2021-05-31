@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.domain;
+package aps.financemanagerdesktop.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -12,6 +12,5 @@ import lombok.Setter;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Category extends BaseEntity{
-    private String name;
     private String description;
 }

@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.domain;
+package aps.financemanagerdesktop.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
