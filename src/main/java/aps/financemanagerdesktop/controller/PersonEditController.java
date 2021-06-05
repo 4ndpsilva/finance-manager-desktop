@@ -1,6 +1,6 @@
 package aps.financemanagerdesktop.controller;
 
-import aps.financemanagerdesktop.controller.model.Person;
+import aps.financemanagerdesktop.model.Person;
 import aps.financemanagerdesktop.util.DateUtil;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.fxml.FXML;

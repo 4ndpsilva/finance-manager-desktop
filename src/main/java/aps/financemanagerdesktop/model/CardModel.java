@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.controller.model;
+package aps.financemanagerdesktop.model;
 
 import aps.financemanagerdesktop.entity.Card;
 import aps.financemanagerdesktop.enums.CardType;

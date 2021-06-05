@@ -19,9 +19,9 @@
             <ButtonBar prefHeight="59.0" prefWidth="346.0">
                 <buttons>
                     <Button mnemonicParsing="false" text="Filtrar" fx:id="btnFilter"/>
-                    <Button mnemonicParsing="false" text="Novo" fx:id="btnNew"/>
-                    <Button mnemonicParsing="false" text="Editar" fx:id="btnEdit"/>
-                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Excluir" fx:id="btnDelete"/>
+                    <Button mnemonicParsing="false" text="Novo" fx:id="btnNew" onAction="#handleForm"/>
+                    <Button mnemonicParsing="false" text="Editar" fx:id="btnEdit" onAction="#handleForm"/>
+                    <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="146.0" text="Excluir" fx:id="btnDelete" onAction="#handleDelete"/>
                 </buttons>
                 <padding>
                     <Insets right="5.0" />

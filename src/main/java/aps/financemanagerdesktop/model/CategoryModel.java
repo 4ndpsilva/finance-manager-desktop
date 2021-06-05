@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.controller.model;
+package aps.financemanagerdesktop.model;
 
 import aps.financemanagerdesktop.entity.Category;
 import javafx.beans.property.SimpleStringProperty;

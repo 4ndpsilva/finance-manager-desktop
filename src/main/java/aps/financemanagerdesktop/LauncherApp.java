@@ -2,7 +2,7 @@ package aps.financemanagerdesktop;
 
 import aps.financemanagerdesktop.controller.CategoryController;
 import aps.financemanagerdesktop.controller.PersonEditController;
-import aps.financemanagerdesktop.controller.model.CategoryModel;
+import aps.financemanagerdesktop.model.CategoryModel;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

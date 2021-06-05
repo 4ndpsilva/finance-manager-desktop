@@ -9,8 +9,13 @@ import java.util.List;
 public class CategoryService {
     private CategoryDAO dao;
 
-    public CategoryService() throws Exception{
-        dao = new CategoryDAO(ConnectionFactory.getConnection());
+    public CategoryService() {
+        try{
+            dao = new CategoryDAO(ConnectionFactory.getConnection());
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     public void save(final Category entity) throws Exception {
