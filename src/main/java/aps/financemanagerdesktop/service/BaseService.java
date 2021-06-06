@@ -1,4 +1,4 @@
 package aps.financemanagerdesktop.service;
 
-public class BaseService {
+public abstract class BaseService {
 }

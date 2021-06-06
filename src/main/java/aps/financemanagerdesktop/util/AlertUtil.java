@@ -15,7 +15,7 @@ public class AlertUtil {
 
     public static void showError(final String header, final String details){
         final Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle(bundle.getString("TIT-004"));
+        alert.setTitle(bundle.getString("TIT-006"));
         show(alert, header, details);
     }
 

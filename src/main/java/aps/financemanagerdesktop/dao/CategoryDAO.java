@@ -17,10 +17,29 @@ public class CategoryDAO {
     private Connection connection;
 
     public void save(final Category entity) throws SQLException {
-        final String sql = "INSERT INTO TB_CATEGORY(ID, NAME, DESCRIPTION) VALUES (CATEGORY_SEQ.NextVal, ?, ?)";
+        final String sql = "INSERT INTO TB_CATEGORY(ID, DESCRIPTION) VALUES (CATEGORY_SEQ.NextVal, ?)";
 
         try(final PreparedStatement stmt = connection.prepareStatement(sql)){
-            stmt.setString(3, entity.getDescription());
+            stmt.setString(1, entity.getDescription());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void update(final Category entity) throws SQLException {
+        final String sql = "UPDATE TB_CATEGORY SET DESCRIPTION = ? WHERE ID = ?";
+
+        try(final PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setString(1, entity.getDescription());
+            stmt.setLong(2, entity.getId());
+            stmt.executeUpdate();
+        }
+    }
+
+    public void delete(final Long id) throws SQLException{
+        final String sql = "DELETE FROM TB_CATEGORY WHERE ID = ?";
+
+        try(final PreparedStatement stmt = connection.prepareStatement(sql)){
+            stmt.setLong(1, id);
             stmt.executeUpdate();
         }
     }

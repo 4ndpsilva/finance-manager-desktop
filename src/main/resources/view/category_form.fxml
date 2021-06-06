@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane minHeight="154.0" minWidth="500.0" prefHeight="154.0" prefWidth="600.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="aps.financemanagerdesktop.controller.CategoryFormController">
+    <children>
+        <GridPane layoutX="45.0" layoutY="49.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="180.0" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="439.3333282470703" minWidth="10.0" prefWidth="439.3333282470703" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Descrição">
+                    <GridPane.margin>
+                        <Insets left="16.0" />
+                    </GridPane.margin>
+                </Label>
+            <TextField GridPane.columnIndex="1" fx:id="txtDescription">
+               <GridPane.margin>
+                  <Insets left="10.0" right="16.0" />
+               </GridPane.margin>
+            </TextField>
+            </children>
+        </GridPane>
+      <ButtonBar layoutX="158.0" layoutY="151.0" prefHeight="50.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+        <buttons>
+          <Button mnemonicParsing="false" text="Salvar" onAction="#handleSave"/>
+          <Button mnemonicParsing="false" text="Limpar" onAction="#handleClear"/>
+          <Button mnemonicParsing="false" text="Cancelar" onAction="#handleCancel"/>
+        </buttons>
+         <padding>
+            <Insets right="16.0" />
+         </padding>
+      </ButtonBar>
+    </children>
 </AnchorPane>

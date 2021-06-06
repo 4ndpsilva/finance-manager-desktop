@@ -1,21 +1,24 @@
 package aps.financemanagerdesktop.controller;
 
-import aps.financemanagerdesktop.LauncherApp;
-import aps.financemanagerdesktop.model.CategoryModel;
 import aps.financemanagerdesktop.entity.Category;
+import aps.financemanagerdesktop.model.CategoryModel;
 import aps.financemanagerdesktop.service.CategoryService;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.util.List;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CategoryController {
@@ -29,93 +32,78 @@ public class CategoryController {
     private TableColumn<CategoryModel, String> columnDescription;
 
     @FXML
-    private TextField txtSearch;
-
-    @FXML
-    private Button btnFilter;
-    
-    @FXML
     private Button btnNew;
 
-    @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnDelete;
+    @Setter
+    private Stage stage;
 
     private CategoryService service;
 
-    private LauncherApp launcherApp;
+    private ResourceBundle i18n;
 
-    private ResourceBundle bundle;
-
-    private boolean isNew;
+    public void configBundle(final ResourceBundle resourceBundle){
+        i18n = resourceBundle;
+        AlertUtil.configBundle(i18n);
+    }
 
     @FXML
     public void initialize(){
-        Locale locale = new Locale("pt", "BR");
-        bundle = ResourceBundle.getBundle("messages", locale);
-        AlertUtil.configBundle(bundle);
         service = new CategoryService();
         loadTable();
-    }
-
-    public void setLauncherApp(final LauncherApp launcherApp){
-        this.launcherApp = launcherApp;
     }
 
     @FXML
     private void handleForm(ActionEvent event){
         if(event.getSource() == btnNew){
-            isNew = true;
             final CategoryModel model = new CategoryModel();
             showForm(model);
         }
         else {
-            isNew = false;
             final CategoryModel model = dataTable.getSelectionModel().getSelectedItem();
 
             if(model != null){
                 showForm(model);
             }
             else{
-                AlertUtil.showWarning(bundle.getString("TIT-001"), bundle.getString("MSG-001"));
+                AlertUtil.showWarning(i18n.getString("TIT-001"), i18n.getString("MSG-001"));
             }
         }
     }
 
     @FXML
     private void handleDelete(){
-        final int selectedIndex = dataTable.getSelectionModel().getSelectedIndex();
+        try{
+            final CategoryModel model = dataTable.getSelectionModel().getSelectedItem();
 
-        if(selectedIndex >= 0){
-            final boolean op = AlertUtil.showConfirm(bundle.getString("TIT-002"), bundle.getString("MSG-002"));
+            if(model != null){
+                final boolean op = AlertUtil.showConfirm(i18n.getString("TIT-002"), i18n.getString("MSG-002"));
 
-            if(op){
-                dataTable.getItems().remove(selectedIndex);
+                if(op){
+                    service.delete(Long.parseLong(model.id()));
+                    loadTable();
+                }
+            }
+            else{
+                AlertUtil.showWarning(i18n.getString("TIT-002"), i18n.getString("MSG-001"));
             }
         }
-        else{
-            AlertUtil.showWarning(bundle.getString("TIT-002"), bundle.getString("MSG-001"));
+        catch (Exception ex){
+            AlertUtil.showError(i18n.getString("TIT-004"), ex.getMessage());
         }
     }
 
     private void showForm(final CategoryModel model){
-        final boolean okClicked = launcherApp.showFormDialog(model);
+        final boolean okClicked = showFormDialog(model);
 
         if(okClicked){
-            if (isNew){
-
-            }
-            else{
-                final int selectedIndex = dataTable.getSelectionModel().getSelectedIndex();
-            }
+            loadTable();
         }
     }
 
     private void loadTable(){
         try{
             final ObservableList<CategoryModel> observableList = FXCollections.observableArrayList();
+            observableList.clear();
             List<Category> list = service.listAll();
             list.forEach(c -> observableList.add(new CategoryModel(c)));
             dataTable.setItems(observableList);
@@ -124,7 +112,37 @@ public class CategoryController {
             columnDescription.setCellValueFactory(c -> c.getValue().getPropDescription());
         }
         catch (Exception ex){
-            AlertUtil.showError(bundle.getString("TIT-004"), ex.getMessage());
+            AlertUtil.showError(i18n.getString("TIT-004"), ex.getMessage());
+        }
+    }
+
+    private boolean showFormDialog(final CategoryModel model){
+        try{
+            final FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("/view/category_form.fxml"));
+            final AnchorPane pane = (AnchorPane) loader.load();
+            final Scene scene = new Scene(pane);
+
+            final Stage dialogStage = new Stage();
+            final CategoryFormController controller = loader.getController();
+            controller.setDialogStage(dialogStage);
+            controller.loadForm(model);
+            controller.setService(service);
+            controller.setI18n(i18n);
+
+            dialogStage.setTitle(i18n.getString("TIT-007"));
+            dialogStage.setMaximized(false);
+            dialogStage.setResizable(false);
+            dialogStage.initModality(Modality.WINDOW_MODAL);
+            dialogStage.initOwner(stage);
+            dialogStage.setScene(scene);
+            dialogStage.showAndWait();
+
+            return controller.isOkClicked();
+        }
+        catch (Exception ex){
+            AlertUtil.showError(i18n.getString("TIT-006"), ex.getMessage());
+            return false;
         }
     }
 }

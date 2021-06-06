@@ -11,13 +11,14 @@ import lombok.Setter;
 public class CategoryModel {
     private StringProperty propId;
     private StringProperty propDescription;
+    private Category entity;
 
     public CategoryModel(){
         this(new Category());
     }
 
     public CategoryModel(final Category category){
-        propId = new SimpleStringProperty(category.getId().toString());
+        propId = new SimpleStringProperty(category.getId() != null ? category.getId().toString() : "");
         propDescription = new SimpleStringProperty(category.getDescription());
     }
 
@@ -35,5 +36,14 @@ public class CategoryModel {
 
     public void description(final String value){
         propDescription.set(value);
+    }
+
+    public Category getEntity(){
+        if(entity == null){
+            entity = new Category(description());
+            entity.setId(id() != null && !"".equals(id()) ? Long.parseLong(id()) : null);
+        }
+
+        return entity;
     }
 }

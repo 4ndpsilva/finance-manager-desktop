@@ -19,7 +19,16 @@ public class CategoryService {
     }
 
     public void save(final Category entity) throws Exception {
-        dao.save(entity);
+        if(entity.getId() != null && entity.getId() > 0){
+            dao.update(entity);
+        }
+        else{
+            dao.save(entity);
+        }
+    }
+
+    public void delete(final Long id) throws Exception {
+        dao.delete(id);
     }
 
     public List<Category> listAll() throws Exception {
