@@ -11,7 +11,6 @@ import lombok.Setter;
 public class CategoryModel {
     private StringProperty propId;
     private StringProperty propDescription;
-    private Category entity;
 
     public CategoryModel(){
         this(new Category());
@@ -39,11 +38,8 @@ public class CategoryModel {
     }
 
     public Category getEntity(){
-        if(entity == null){
-            entity = new Category(description());
-            entity.setId(id() != null && !"".equals(id()) ? Long.parseLong(id()) : null);
-        }
-
+        final Category entity = new Category(description());
+        entity.setId(id() != null && !"".equals(id()) ? Long.parseLong(id()) : null);
         return entity;
     }
 }

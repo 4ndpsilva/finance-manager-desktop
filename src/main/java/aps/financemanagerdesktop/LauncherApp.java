@@ -44,6 +44,7 @@ public class LauncherApp extends Application {
 
             final Scene scene = new Scene(pane);
             stage.setScene(scene);
+            stage.setResizable(false);
             stage.show();
         }
         catch (IOException ex){
