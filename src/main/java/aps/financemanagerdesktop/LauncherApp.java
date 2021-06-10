@@ -1,12 +1,11 @@
 package aps.financemanagerdesktop;
 
-import aps.financemanagerdesktop.controller.CategoryController;
+import aps.financemanagerdesktop.controller.MainController;
 import aps.financemanagerdesktop.util.AlertUtil;
 import aps.financemanagerdesktop.util.I18NUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -35,12 +34,13 @@ public class LauncherApp extends Application {
     private void initApp() {
         try{
             final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/category.fxml"));
-            this.pane = (BorderPane) loader.load();
 
-            final CategoryController controller = loader.getController();
-            controller.setStage(stage);
-            controller.configBundle(resourceBundle);
+            loader.setLocation(getClass().getResource("/view/main.fxml"));
+            this.pane = (Pane) loader.load();
+
+            final MainController controller = (MainController) loader.getController();
+            controller.setStageOwner(stage);
+            controller.setI18n(resourceBundle);
 
             final Scene scene = new Scene(pane);
             stage.setScene(scene);
@@ -48,7 +48,7 @@ public class LauncherApp extends Application {
             stage.show();
         }
         catch (IOException ex){
-            AlertUtil.showError(ex.getMessage(), ex.getCause().getMessage());
+            AlertUtil.showError(resourceBundle.getString("TIT-004"), ex.getMessage());
         }
     }
 }

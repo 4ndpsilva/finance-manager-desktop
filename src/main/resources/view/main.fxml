@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<Pane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" minHeight="600.0" minWidth="800.0" fx:controller="aps.financemanagerdesktop.controller.MainController">
    <children>
-      <MenuBar layoutX="2.0" layoutY="9.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-          <menus>
-              <Menu mnemonicParsing="false" text="Cadastros">
-                  <items>
-                      <MenuItem mnemonicParsing="false" text="Categorias" />
-                      <MenuItem mnemonicParsing="false" text="Contas" />
-                      <MenuItem mnemonicParsing="false" text="Cartões" />
-                      <MenuItem mnemonicParsing="false" text="Lançamentos" />
-                      <SeparatorMenuItem mnemonicParsing="false" />
-                      <MenuItem mnemonicParsing="false" text="Sair" />
-                  </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Relatórios">
-                  <items>
-                      <MenuItem mnemonicParsing="false" text="Dashboard" />
-                  </items>
-              </Menu>
-              <Menu mnemonicParsing="false" text="Dados">
-                  <items>
-                      <MenuItem mnemonicParsing="false" text="Importar Planilha"/>
-                  </items>
-              </Menu>
-          </menus>
+      <MenuBar fx:id="mnbMain" layoutY="1.0" prefHeight="25.0" prefWidth="800.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Cadastros">
+            <items>
+                  <MenuItem fx:id="mniCategory" mnemonicParsing="false" text="Categorias" onAction="#loadCategory"/>
+                  <MenuItem fx:id="mniAccount" mnemonicParsing="false" text="Contas" />
+                  <MenuItem fx:id="mniCards" mnemonicParsing="false" text="Cartões" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem fx:id="mniImport" mnemonicParsing="false" text="Importação de dados" onAction="#loadImporter"/>
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem fx:id="miClose" mnemonicParsing="false" text="Sair" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Movimentações">
+               <items>
+                  <MenuItem fx:id="mniEntry" mnemonicParsing="false" text="Lançamentos" />
+                  <MenuItem fx:id="mniDashboard" mnemonicParsing="false" text="Dashboard" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Relatórios" />
+        </menus>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </MenuBar>
    </children>
-</AnchorPane>
+</Pane>
