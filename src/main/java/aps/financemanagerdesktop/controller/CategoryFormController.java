@@ -11,7 +11,7 @@ import lombok.Setter;
 
 import java.util.ResourceBundle;
 
-public class CategoryFormController {
+public class CategoryFormController extends AbstractController{
     @FXML
     private TextField txtDescription;
 

@@ -6,16 +6,10 @@ import aps.financemanagerdesktop.service.ImporterService;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import lombok.Setter;
 
-import java.util.ResourceBundle;
-
-public class ImportController {
+public class ImportController extends AbstractController{
     @FXML
     private TextField txtFile;
-
-	@Setter
-	private ResourceBundle i18n;
 
     private ImporterService importerService;
 

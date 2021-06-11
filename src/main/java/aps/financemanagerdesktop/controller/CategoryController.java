@@ -1,27 +1,24 @@
 package aps.financemanagerdesktop.controller;
 
+import aps.financemanagerdesktop.controller.navigation.Navigator;
 import aps.financemanagerdesktop.entity.Category;
 import aps.financemanagerdesktop.model.CategoryModel;
 import aps.financemanagerdesktop.service.CategoryService;
 import aps.financemanagerdesktop.util.AlertUtil;
+import aps.financemanagerdesktop.util.DialogUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import lombok.Setter;
 
 import java.util.List;
-import java.util.ResourceBundle;
 
-public class CategoryController {
+public class CategoryController extends AbstractController {
 	@FXML
     private TableView<CategoryModel> dataTable;
 
@@ -34,20 +31,13 @@ public class CategoryController {
     @FXML
     private Button btnNew;
 
-    @Setter
     private Stage stage;
 
     private CategoryService service;
 
-    private ResourceBundle i18n;
-
-    public void configBundle(final ResourceBundle resourceBundle){
-        i18n = resourceBundle;
-        AlertUtil.configBundle(i18n);
-    }
-
     @FXML
     public void initialize(){
+        stage = new Stage();
         service = new CategoryService();
         loadTable();
     }
@@ -118,26 +108,12 @@ public class CategoryController {
 
     private boolean showFormDialog(final CategoryModel model){
         try{
-            final FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/category_form.fxml"));
-            final AnchorPane pane = (AnchorPane) loader.load();
-            final Scene scene = new Scene(pane);
-
-            final Stage dialogStage = new Stage();
-            final CategoryFormController controller = loader.getController();
-            controller.setDialogStage(dialogStage);
+            final AnchorPane pane = (AnchorPane) Navigator.loadView(getClass(), "category_form");
+            final CategoryFormController controller = Navigator.getController();
             controller.loadForm(model);
             controller.setService(service);
-            controller.setI18n(i18n);
 
-            dialogStage.setTitle(i18n.getString("TIT-007"));
-            dialogStage.setMaximized(false);
-            dialogStage.setResizable(false);
-            dialogStage.initModality(Modality.WINDOW_MODAL);
-            dialogStage.initOwner(stage);
-            dialogStage.setScene(scene);
-            dialogStage.showAndWait();
-
+            DialogUtil.showModal(pane, stage, i18n.getString("TIT-007"));
             return controller.isOkClicked();
         }
         catch (Exception ex){
