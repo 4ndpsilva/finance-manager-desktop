@@ -17,12 +17,11 @@ public final class DialogUtil {
         dialog.showAndWait();
     }
 
-    public static void show(final Pane pane, final Stage owner, final String title){
+    public static void show(final Pane pane, final String title){
         final Scene scene = new Scene(pane);
         final Stage dialog = new Stage();
         dialog.setScene(scene);
         dialog.setTitle(title);
-        dialog.initOwner(owner);
         dialog.show();
     }
 }

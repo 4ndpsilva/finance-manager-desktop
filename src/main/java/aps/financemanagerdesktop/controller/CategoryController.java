@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lombok.Setter;
 
 import java.util.List;
 
@@ -31,6 +32,7 @@ public class CategoryController extends AbstractController {
     @FXML
     private Button btnNew;
 
+    @Setter
     private Stage stage;
 
     private CategoryService service;

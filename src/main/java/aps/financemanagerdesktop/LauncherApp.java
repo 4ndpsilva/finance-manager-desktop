@@ -34,7 +34,7 @@ public class LauncherApp extends Application {
             final MainController controller = Navigator.getController();
             controller.setStageOwner(stage);
             controller.configBundle(resourceBundle);
-            DialogUtil.show(pane, stage, resourceBundle.getString("TIT-008"));
+            DialogUtil.show(pane, resourceBundle.getString("TIT-008"));
         }
         catch (Exception ex){
             AlertUtil.showError(resourceBundle.getString("TIT-004"), ex.getMessage());
