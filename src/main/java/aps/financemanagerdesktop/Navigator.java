@@ -1,4 +1,4 @@
-package aps.financemanagerdesktop.controller.navigation;
+package aps.financemanagerdesktop;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.Pane;

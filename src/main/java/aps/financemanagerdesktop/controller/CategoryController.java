@@ -1,6 +1,6 @@
 package aps.financemanagerdesktop.controller;
 
-import aps.financemanagerdesktop.controller.navigation.Navigator;
+import aps.financemanagerdesktop.Navigator;
 import aps.financemanagerdesktop.entity.Category;
 import aps.financemanagerdesktop.model.CategoryModel;
 import aps.financemanagerdesktop.service.CategoryService;
@@ -15,7 +15,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -32,7 +31,6 @@ public class CategoryController extends AbstractController {
     @FXML
     private Button btnNew;
 
-    @Setter
     private Stage stage;
 
     private CategoryService service;
@@ -112,7 +110,7 @@ public class CategoryController extends AbstractController {
         try{
             final AnchorPane pane = (AnchorPane) Navigator.loadView(getClass(), "category_form");
             final CategoryFormController controller = Navigator.getController();
-            controller.loadForm(model);
+            controller.loadModel(model);
             controller.setService(service);
 
             DialogUtil.showModal(pane, stage, i18n.getString("TIT-007"));

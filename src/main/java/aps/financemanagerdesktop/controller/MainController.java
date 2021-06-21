@@ -1,26 +1,24 @@
 package aps.financemanagerdesktop.controller;
 
-import aps.financemanagerdesktop.controller.navigation.Navigator;
+import aps.financemanagerdesktop.ViewLoader;
 import aps.financemanagerdesktop.util.AlertUtil;
-import aps.financemanagerdesktop.util.DialogUtil;
 import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
-import lombok.Setter;
+
+import java.util.ResourceBundle;
 
 public class MainController extends AbstractController{
-    @Setter
-    private Stage stageOwner;
+    private ViewLoader viewLoader;
+    private ResourceBundle i18n;
+
+    @FXML
+    private void initialize(){
+        viewLoader = new ViewLoader();
+    }
 
     @FXML
     private void loadCategory(){
         try{
-            final BorderPane pane = (BorderPane) Navigator.loadView(getClass(), "category");
-            final CategoryController controller = Navigator.getController();
-            controller.configBundle(i18n);
-            controller.setStage(new Stage());
-            DialogUtil.showModal(pane, stageOwner, i18n.getString("TIT-007"));
+            viewLoader.loadCategory();
         }
         catch (Exception ex){
             AlertUtil.showError(i18n.getString("TIT-004"), ex.getMessage());
@@ -30,8 +28,7 @@ public class MainController extends AbstractController{
     @FXML
     private void loadImporter(){
         try{
-            final AnchorPane pane = (AnchorPane) Navigator.loadView(getClass(), "importer");
-            DialogUtil.showModal(pane, new Stage(), i18n.getString("TIT-009"));
+            viewLoader.loadImporter();
         }
         catch (Exception ex){
             AlertUtil.showError(i18n.getString("TIT-004"), ex.getMessage());

@@ -5,7 +5,6 @@ import aps.financemanagerdesktop.service.CategoryService;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,9 +13,6 @@ import java.util.ResourceBundle;
 public class CategoryFormController extends AbstractController{
     @FXML
     private TextField txtDescription;
-
-    @Setter
-    private Stage dialogStage;
 
     @Setter
     private CategoryService service;
@@ -42,7 +38,6 @@ public class CategoryFormController extends AbstractController{
                 model.description(txtDescription.getText());
                 service.save(model.getEntity());
                 okClicked = true;
-                dialogStage.close();
             }
         }
         catch (Exception ex){
@@ -52,7 +47,6 @@ public class CategoryFormController extends AbstractController{
 
     @FXML
     private void handleCancel(){
-        this.dialogStage.close();
     }
 
     @FXML
@@ -76,7 +70,7 @@ public class CategoryFormController extends AbstractController{
         return true;
     }
 
-    public void loadForm(final CategoryModel model){
+    public void loadModel(final CategoryModel model){
         this.model = model;
         txtDescription.setText(this.model.description());
     }
