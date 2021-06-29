@@ -1,5 +1,6 @@
 package aps.financemanagerdesktop;
 
+import aps.financemanagerdesktop.controller.AccountController;
 import aps.financemanagerdesktop.controller.CategoryController;
 import aps.financemanagerdesktop.controller.ImportController;
 import aps.financemanagerdesktop.controller.MainController;
@@ -34,6 +35,13 @@ public class ViewLoader {
         final CategoryController controller = Navigator.getController();
         controller.configBundle(i18n);
         showModal(pane, i18n.getString("TIT-007"));
+    }
+
+    public void loadAccount() throws Exception{
+        final BorderPane pane = (BorderPane) Navigator.loadView(getClass(), "account");
+        final AccountController controller = Navigator.getController();
+        controller.configBundle(i18n);
+        showModal(pane, i18n.getString("TIT-010"));
     }
 
     public void loadImporter() throws Exception{
