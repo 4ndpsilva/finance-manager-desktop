@@ -17,10 +17,11 @@ public final class DialogUtil {
         dialogModal.showAndWait();
     }
 
-    public static void show(final Pane pane, final String title){
+    public static void show(final Pane pane, final String title, final boolean maximized){
         final Scene scene = new Scene(pane);
         Stage dialog = new Stage();
         dialog.setScene(scene);
+        dialog.setMaximized(maximized);
         dialog.setTitle(title);
         dialog.show();
     }

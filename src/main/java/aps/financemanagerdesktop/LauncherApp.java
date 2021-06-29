@@ -18,7 +18,7 @@ public class LauncherApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        resourceBundle = I18NUtil.getResourceBundle(new Locale("pt", "BR"));
+        resourceBundle = I18NUtil.getResourceBundle(new Locale("en", "US"));
         initApp(stage);
     }
 

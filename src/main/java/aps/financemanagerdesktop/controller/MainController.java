@@ -3,15 +3,16 @@ package aps.financemanagerdesktop.controller;
 import aps.financemanagerdesktop.ViewLoader;
 import aps.financemanagerdesktop.util.AlertUtil;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 
+import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainController extends AbstractController{
+public class MainController extends AbstractController implements Initializable {
     private ViewLoader viewLoader;
-    private ResourceBundle i18n;
 
-    @FXML
-    private void initialize(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         viewLoader = new ViewLoader();
     }
 

@@ -26,7 +26,7 @@ public class ViewLoader {
         final Pane pane = Navigator.loadView(getClass(),"main");
         final MainController controller = Navigator.getController();
         controller.configBundle(i18n);
-        DialogUtil.show(pane, i18n.getString("TIT-008"));
+        DialogUtil.show(pane, i18n.getString("TIT-008"), true);
     }
 
     public void loadCategory() throws Exception{
